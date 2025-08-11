@@ -104,5 +104,3 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ---
-
-Do you want me to also make a **badges + banner version** so your GitHub page looks more professional and eye-catching? That would make Snipr stand out more.
