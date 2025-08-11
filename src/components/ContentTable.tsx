@@ -95,10 +95,9 @@ const ShortLinkTable = () => {
             .catch(() => toast.error('Failed to copy'));
     };
 
-    console.log("ShortLinkTable render, state:", { loading, error, urls });
 
     return (
-        <div className="bg-slate-50 dark:bg-[#0B101B] dark:text-white p-4 sm:p-6 md:p-8 rounded-xl w-full max-w-[1200px] mx-auto">
+        <div className="bg-slate-50 dark:bg-[#0B101B] dark:text-white p-4 sm:p-6 md:p-8 rounded-xl w-full   mx-auto">
             {loading && (
                 <div className="text-center text-gray-500 dark:text-gray-400 py-4">
                     <p>Loading URLs...</p>
@@ -109,7 +108,7 @@ const ShortLinkTable = () => {
             )}
             {!loading && !error && (
                 <>
-                    <div className="hidden sm:block overflow-x-auto">
+                    <div className="hidden sm:block">
                         <table className="w-full text-xs sm:text-sm md:text-base text-left">
                             <thead className="text-gray-400 border-b border-gray-700">
                                 <tr>

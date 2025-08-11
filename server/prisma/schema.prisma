@@ -11,15 +11,15 @@ datasource db {
 model Url {
   id        Int      @id @default(autoincrement())
   shortUrl  String   @unique
-  longUrl   String
+  longUrl   String   @db.VarChar(2048)
   click     Int      @default(0)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   status    Status   @default(Active)
-  User      User?    @relation(fields: [userId], references: [id])
-  userId    Int // Remove `?` if URLs must be tied to a user
+  User      User     @relation(fields: [userId], references: [id])
+  userId    Int
 
-  @@index([shortUrl]) // Add index for faster lookups
+  @@index([shortUrl])
   @@map("urls")
 }
 

@@ -13,11 +13,9 @@ const App = () => {
   const [isLoadingUser, setIsLoadingUser] = useState(true);
 
   useEffect(() => {
-    console.log("App useEffect, userInfo:", userInfo);
     setIsLoadingUser(false); // Resolve loading once userInfo is set
   }, [userInfo]);
 
-  console.log("App render, userInfo:", userInfo, "isLoadingUser:", isLoadingUser);
 
   if (isLoadingUser) {
     return (

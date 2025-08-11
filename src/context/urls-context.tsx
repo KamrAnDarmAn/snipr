@@ -17,7 +17,6 @@ export const UrlContextProvider = ({ children }) => {
         debounce(async () => {
             if (isFetching || !userInfo?.token) {
                 if (!userInfo?.token) {
-                    console.log("No token, resetting state");
                     setUrls([]);
                     setError("Please log in to view URLs.");
                     setLoading(false);
@@ -25,7 +24,6 @@ export const UrlContextProvider = ({ children }) => {
                 return;
             }
 
-            console.log("Fetching URLs with token:", userInfo.token);
             setIsFetching(true);
             setLoading(true);
             setError(null);
@@ -34,7 +32,6 @@ export const UrlContextProvider = ({ children }) => {
                 const source = axios.CancelToken.source();
                 const timeout = setTimeout(() => {
                     source.cancel("Request timed out");
-                    console.log("Fetch timed out after 5s");
                 }, 5000);
 
                 const res = await axios.get(
@@ -48,7 +45,6 @@ export const UrlContextProvider = ({ children }) => {
                 );
 
                 clearTimeout(timeout);
-                console.log("Fetch response:", res.data);
                 if (!res.data.urls) {
                     console.warn("No urls field in response:", res.data);
                     setError("Invalid response format from server.");
@@ -60,7 +56,6 @@ export const UrlContextProvider = ({ children }) => {
                 let errorMessage;
                 if (axios.isCancel(error)) {
                     errorMessage = "Request timed out. Please try again.";
-                    console.log("Fetch cancelled:", error.message);
                 } else {
                     errorMessage =
                         error.response?.status === 401
@@ -68,7 +63,6 @@ export const UrlContextProvider = ({ children }) => {
                             : error.response?.data?.error || "Failed to fetch URLs.";
                     console.error("Fetch error:", errorMessage, error.response || error);
                     if (error.response?.status === 401) {
-                        console.log("401 error, clearing userInfo");
                         localStorage.removeItem("token");
                         setUserInfo(null);
                     }
@@ -77,7 +71,6 @@ export const UrlContextProvider = ({ children }) => {
                 toast.error(errorMessage);
                 setUrls([]);
             } finally {
-                console.log("Fetch complete, setting loading to false");
                 setLoading(false);
                 setIsFetching(false);
             }

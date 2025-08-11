@@ -7,7 +7,6 @@ import { UserContext } from '@/context/user-context';
 const Navbar = () => {
     const { userInfo, logout } = useContext(UserContext);
 
-    console.log("Navbar render, userInfo:", userInfo);
 
     return (
         <nav className="w-full top-0 bg-white dark:bg-gray-800 shadow- flex items-center justify-between px-4 py-3">
