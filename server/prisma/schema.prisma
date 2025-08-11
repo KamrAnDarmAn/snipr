@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Url {
+  id        Int      @id @default(autoincrement())
+  shortUrl  String   @unique
+  longUrl   String
+  click     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  status    Status   @default(Active)
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    Int // Remove `?` if URLs must be tied to a user
+
+  @@index([shortUrl]) // Add index for faster lookups
+  @@map("urls")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  urls      Url[]
+
+  @@map("users")
+}
+
+enum Status {
+  Active
+  InActive
+}
