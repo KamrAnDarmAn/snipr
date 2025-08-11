@@ -1,6 +1,3 @@
-Here’s your full **`README.md`** content with everything you asked for, including the MIT License inside the file so it’s all in one place.
-
-````markdown
 # Snipr
 
 Snipr is a URL shortener built with **Node.js**, **Express**, **Prisma**, and **MySQL**.  
@@ -35,6 +32,7 @@ Scanning the QR code instantly redirects users to the original URL.
 git clone https://github.com/KamrAnDarmAn/snipr.git
 cd snipr
 ```
+
 ````
 
 ### 2️⃣ Install dependencies
@@ -104,3 +102,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ---
+````
