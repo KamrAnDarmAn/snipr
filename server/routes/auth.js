@@ -7,6 +7,7 @@ const prisma = new PrismaClient();
 require("dotenv").config();
 
 router.post("/register", async (req, res) => {
+  console.log("I got reguest!!!");
   const { username, password } = req.body;
 
   if (!username || !password || username.length < 3 || password.length < 6) {
@@ -16,6 +17,7 @@ router.post("/register", async (req, res) => {
   }
 
   const existingUser = await prisma.user.findUnique({ where: { username } });
+
   if (existingUser) {
     return res.status(409).json({ error: "User already exists" });
   }
