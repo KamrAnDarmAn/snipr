@@ -28,7 +28,6 @@ const App = () => {
     );
   }
 
-
   return (
     <main className="flex flex-col px-5 items-center justify-center bg-[#C9CED6] dark:bg-[#0B101B] min-h-screen">
       <Navbar />
